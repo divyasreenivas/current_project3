@@ -1,5 +1,6 @@
 let firstnumber = 3
 let secondnumber = 9
+let cards =[firstnumber,secondnumber]
 let sum= firstnumber+secondnumber
 let blackjack = false 
 let alive =true
@@ -12,7 +13,7 @@ function startgame(){
     rendergame()
 }
 function rendergame(){  
-    cardel.textContent="cards:"+firstnumber +" "+ secondnumber
+    cardel.textContent="cards:"+cards[0] +" "+ cards[1]
     sumel.textContent = "sum :"+ sum    
     if(sum<21){
         message="sad face "
