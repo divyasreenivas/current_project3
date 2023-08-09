@@ -1,19 +1,43 @@
-let firstnumber = 3
-let secondnumber = 9
-let cards =[firstnumber,secondnumber]
-let sum= firstnumber+secondnumber
+
+let cards =[]
+let sum= 0
 let blackjack = false 
-let alive =true
+let alive =false
 let message =""
 let messageel=document.getElementById("message-el")
 let sumel = document.getElementById("sum-el")
 let cardel = document.getElementById("card-el")
+let playername = "div"
+let playchip =143
+let playerel=document.getElementById("player-el")
+playerel.textContent=playername+" " + playchip
+console.log(cards)
+function getrandom(){
+    let random = Math.floor(Math.random()*13)+1
+    
+    if (random >10){
+         return  10
+    }else if (random ===1){        
+        return 1
+    }else{
+        return random
+    }
+    
+}
 
 function startgame(){
+    alive=true
+    let firstnumber = getrandom()
+    let secondnumber = getrandom()
+    cards =[firstnumber,secondnumber]
+    sum =firstnumber+secondnumber
     rendergame()
 }
-function rendergame(){  
-    cardel.textContent="cards:"+cards[0] +" "+ cards[1]
+function rendergame(){
+    cardel.textContent = "cards:"
+    for (let i =0 ;i<cards.length;i++){ 
+        cardel.textContent += cards[i] +" "
+}
     sumel.textContent = "sum :"+ sum    
     if(sum<21){
         message="sad face "
@@ -29,12 +53,16 @@ function rendergame(){
     messageel.textContent=message
 }
 function newcard(){
-    console.log("draw a card from deck ")
-    let cardnumber=6
-    sum +=cardnumber
+   if ( alive===true && blackjack===false){
+    let card=getrandom()
+    sum +=card
+    cards.push(card)
+    console.log(cards)
+   
     rendergame()
 
+   }
+    
+
 }
-
-
-
+ 
